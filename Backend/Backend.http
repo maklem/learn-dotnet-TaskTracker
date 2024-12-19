@@ -4,3 +4,16 @@ GET {{Backend_HostAddress}}/weatherforecast/
 Accept: application/json
 
 ###
+
+GET {{Backend_HostAddress}}/task/
+Accept: application/json
+
+###
+GET {{Backend_HostAddress}}/task/0
+Accept: application/json
+
+###
+GET {{Backend_HostAddress}}/task/-1
+Accept: application/json
+
+###
