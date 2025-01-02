@@ -33,4 +33,39 @@ public class TaskController : Controller
         }
         return task;
     }
+
+    [HttpPost]
+    public IActionResult Create(DailyTask task)
+    {            
+        taskService.Add(task);
+        return CreatedAtAction(nameof(GetTask), new { id = task.Id }, task);
+    }
+
+    [HttpPut("{id}")]
+    public IActionResult Update(int id, DailyTask task)
+    {
+        if (id != task.Id)
+            return BadRequest();
+            
+        var existingPizza = taskService.Find(id);
+        if(existingPizza is null)
+            return NotFound();
+    
+        taskService.Update(task);           
+    
+        return NoContent();
+    }
+
+    [HttpDelete("{id}")]
+    public IActionResult Delete(int id)
+    {
+        var pizza = taskService.Find(id);
+    
+        if (pizza is null)
+            return NotFound();
+        
+        taskService.Delete(id);
+    
+        return NoContent();
+    }
 }

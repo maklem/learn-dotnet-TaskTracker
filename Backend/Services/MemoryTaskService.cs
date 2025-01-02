@@ -12,8 +12,8 @@ public class MemoryTaskService : ITaskService
     {
         var demotask = new DailyTask
         {
-            name = "Hello World",
-            to_be_done_at = DateTime.Now.TimeOfDay
+            Name = "Hello World",
+            To_be_done_at = DateTime.Now.TimeOfDay
         };
 
         this.Add(demotask);
@@ -25,12 +25,30 @@ public class MemoryTaskService : ITaskService
 
     public void Add(DailyTask task)
     {
-        task.id = highest_task_id++;
+        task.Id = highest_task_id++;
         tasks.Add(task);
     }
 
     public DailyTask? Find(int id)
     {
-        return tasks.FirstOrDefault(t => t.id == id);
+        return tasks.FirstOrDefault(t => t.Id == id);
+    }
+
+    public void Update(DailyTask task)
+    {
+        var index = tasks.FindIndex(t => t.Id == task.Id);
+        if(index == -1)
+            return;
+
+        tasks[index] = task;
+    }
+
+    public void Delete(int id)
+    {
+        var task = tasks.FirstOrDefault(t => t.Id == id);
+        if(task is null)
+            return;
+
+        tasks.Remove(task);
     }
 }

@@ -8,4 +8,6 @@ public interface ITaskService
 
     public void Add(DailyTask task);
     public DailyTask? Find(int id);
+    public void Update(DailyTask task);
+    public void Delete(int id);
 }
