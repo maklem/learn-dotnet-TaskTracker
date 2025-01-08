@@ -5,17 +5,17 @@ import axios from 'axios'
 defineProps<{ msg: string }>()
 
 const backend = "api/"
-const message = ref( [{'id': -1, "name": "nullstring"}])
+const tasks = ref( [{'id': -1, "name": "nullstring"}])
 
 onMounted(() =>{
     axios
     .get(backend + 'task')
-    .then((response) => {message.value = response.data})
+    .then((response) => {tasks.value = response.data})
     }
 )
 </script>
 
 <template>
     <h1>{{ msg }}</h1>
-    <div v-for="title in message">{{title.id}} => {{ title.name }}</div>
+    <div v-for="task in tasks">{{task.id}} => {{ task.name }}</div>
 </template>

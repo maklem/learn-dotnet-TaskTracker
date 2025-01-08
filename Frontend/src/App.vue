@@ -3,7 +3,7 @@ import HelloAxios from "./components/HelloAxios.vue"
 </script>
 
 <template>
-  <HelloAxios msg="Axios Hello World" />
+  <HelloAxios msg="Current Tasks" />
 </template>
 
 <style scoped>
