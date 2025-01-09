@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, onMounted, inject } from 'vue'
+import { ref } from 'vue'
 import TaskModel from '../models/task'
 
 defineProps<{
