@@ -1,9 +1,21 @@
 <script setup lang="ts">
-import HelloAxios from "./components/HelloAxios.vue"
+import { provide } from 'vue'
+import TaskTable from "./components/TaskTable.vue"
+import TaskRepository from "./repositories/TaskRepository"
+import TaskTableViewModel from './viewmodels/taskTable'
+
+const tasksRepository = new TaskRepository()
+provide('tasksRepository', tasksRepository)
+
+const taskTableViewModel = new TaskTableViewModel(tasksRepository)
 </script>
 
 <template>
-  <HelloAxios msg="Current Tasks" />
+  <TaskTable
+    msg="My Tasks"
+    :tasks=taskTableViewModel.tasks.value
+    @add-task="(name) => {taskTableViewModel.onAdd(name)}"
+    @del-task="(id) => {taskTableViewModel.onDelete(id)}" />
 </template>
 
 <style scoped>
