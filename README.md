@@ -21,7 +21,7 @@ Damit könnte ich Aufgaben geräteübergreifend verwalten.
   Zu Lernzwecken von Web-APIs und deren Verwendung.
 + .NET Core Backend  
   Verwaltet eine Liste von täglichen Aufgaben.
-  Auf eine persistente Datenbank und Nutzerverwaltung habe ich vorerst verzichtet.
+  Auf Nutzerverwaltung mit Login habe ich vorerst verzichtet.
 + Vue.js Frontend  
   Nutzt die API um die Liste der Aufgaben zu zeigen.
   Perspektivisch soll auch bearbeiten und erledigen von Aufgaben hinzukommen.

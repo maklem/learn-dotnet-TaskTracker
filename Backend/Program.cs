@@ -8,7 +8,7 @@ builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
-builder.Services.AddSingleton<ITaskService,MemoryTaskService>();
+builder.Services.AddSingleton<ITaskService>(x => new SqliteTaskService("development.db"));
 
 var app = builder.Build();
 
