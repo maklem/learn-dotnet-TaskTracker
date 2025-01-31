@@ -33,6 +33,18 @@ export default class TaskRepository implements ITaskRepository {
         await axios.delete(backend + 'task/' + id.toString())
     }
 
+    async update(id: number, name: string): Promise<void>{
+        let response = await axios.get(backend + 'task/' + id.toString())
+
+        if(response.status != 200)
+        {
+            return;
+        }
+        let payload = new DatabaseTaskModel(response.data);
+        payload.name = name;
+        await axios.put(backend + 'task/' + id.toString(), payload)
+    }
+
     async do(id: number): Promise<void>{
         let response = await axios.get(backend + 'task/' + id.toString())
 
