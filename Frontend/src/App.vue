@@ -15,7 +15,9 @@ const taskTableViewModel = new TaskTableViewModel(tasksRepository)
     msg="My Tasks"
     :tasks=taskTableViewModel.tasks.value
     @add-task="(name) => {taskTableViewModel.onAdd(name)}"
-    @del-task="(id) => {taskTableViewModel.onDelete(id)}" />
+    @del-task="(id) => {taskTableViewModel.onDelete(id)}"
+    @do-task="(id) => {taskTableViewModel.onDo(id)}"
+    />
 </template>
 
 <style scoped>

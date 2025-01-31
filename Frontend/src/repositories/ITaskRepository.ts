@@ -5,4 +5,5 @@ export default interface ITaskRepository {
 
     create: (name: string) => Promise<void>;
     delete: (id: number) => Promise<void>;
+    do: (id: number) => Promise<void>;
 }

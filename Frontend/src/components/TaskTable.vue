@@ -8,6 +8,7 @@ defineProps<{
 }>()
 defineEmits<{
     (e: 'editTask', id: number): void
+    (e: 'doTask', id: number): void
     (e: 'addTask', name: string): void
     (e: 'delTask', id: number): void
 }>()
@@ -22,6 +23,7 @@ const newTaskName = ref("")
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Due?</th>
                 <th>Name</th>
                 <th>Actions</th>
             </tr>
@@ -29,14 +31,16 @@ const newTaskName = ref("")
         <tbody>
             <tr v-for="task in tasks">
                 <td>{{ task.id }}</td>
+                <td>{{ task.due }}</td>
                 <td>{{ task.name }}</td>
                 <td>
-                    <button :disabled=task.due>Do!</button>
+                    <button :disabled=!task.due @click="$emit('doTask', task.id)">Do!</button>
                     <button @click="$emit('editTask',task.id)">Edit</button>
                     <button @click="$emit('delTask',task.id)">Delete</button>
                 </td>
             </tr>
             <tr>
+                <td>#?</td>
                 <td></td>
                 <td><input v-model="newTaskName" /></td>
                 <td><button @click="$emit('addTask', newTaskName)">add</button></td>
